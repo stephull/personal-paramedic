@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">FallDetection</string>
-    <string name="x_cordinate">x_cordinate</string>
-    <string name="y_cordinate">y_cordinate</string>
-    <string name="z_cordinate">z_cordinate</string>
+    <string name="x_coordinate">X: %1$s</string>
+    <string name="y_coordinate">Y: %1$s</string>
+    <string name="z_coordinate">Z: %1$s</string>
+    <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>
 </resources>

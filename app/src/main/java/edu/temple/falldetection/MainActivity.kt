@@ -7,7 +7,9 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -47,7 +49,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         val xValue: Float
         val yValue: Float
         val zValue: Float
-//        val linearAcceleration = floatArrayOf(.1f)
 
         if (event?.sensor?.type == Sensor.TYPE_ACCELEROMETER){
 
@@ -62,12 +63,22 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             yValue = alpha * values[1] + (1 - alpha) * values[1]
             zValue = alpha * values[2] + (1 - alpha) * values[2]
 
-            xCoordinate.text = xValue.toString()
-            yCoordinate.text = yValue.toString()
-            zCoordinate.text = zValue.toString()
+            xCoordinate.text = getString(R.string.x_coordinate, xValue.toString())
+            yCoordinate.text = getString(R.string.y_coordinate, yValue.toString())
+            zCoordinate.text = getString(R.string.z_coordinate, zValue.toString())
+//            var text = getString(R.string.welcome_messages, xValue.toString(), 1)
 
-            val a = isFalling(xValue, yValue, zValue)
-            Log.i("isFalling", a.toString())
+//            xCoordinate.text = text
+
+//            xCoordinate.setText( xValue.toString())
+//            yCoordinate.setText( yValue.toString())
+//            zCoordinate.setText( zValue.toString())
+
+            val falling = isFalling(xValue, yValue, zValue)
+            Log.i("isFalling", falling.toString())
+            if(falling){
+                Toast.makeText(applicationContext,"Fall Detected!!",Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
