@@ -42,14 +42,19 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             event.values[2] = alpha * event.values[2] + (1 - alpha) * event.values[2]
 
             // Remove the gravity contribution with the high-pass filter.
-            linearAcceleration[0] = event.values[0] - event.values[0]
-            linearAcceleration[1] = event.values[1] - event.values[1]
-            linearAcceleration[2] = event.values[2] - event.values[2]
+//            linearAcceleration[0] = event.values[0] - event.values[0]
+//            linearAcceleration[1] = event.values[1] - event.values[1]
+//            linearAcceleration[2] = event.values[2] - event.values[2]
 
         }
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
         TODO("Not yet implemented")
+    }
+
+    override fun onDestroy() {
+        sensorManager.unregisterListener(this)
+        super.onDestroy()
     }
 }
